@@ -38,6 +38,7 @@
 #include "geopm_agent.h"
 #include "geopm_pio.h"
 #include "geopm_error.h"
+#include "config.h"
 
 SPANK_PLUGIN(geopm, 1);
 
