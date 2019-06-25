@@ -30,14 +30,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "limits.h"
-#include "math.h"
+#include <limits.h>
+#include <math.h>
 
-#include "slurm/spank.h"
+#include <slurm/spank.h>
 
 #include "geopm_agent.h"
 #include "geopm_pio.h"
 #include "geopm_error.h"
+#include "geopm_version.h"
 #include "config.h"
 
 SPANK_PLUGIN(geopm, 1);
@@ -50,6 +51,7 @@ int slurm_spank_job_epilog(spank_t spank_ctx, int argc, char **argv);
 int slurm_spank_init(spank_t spank_ctx, int argc, char **argv)
 {
     slurm_info("Loaded geopm plugin.");
+    slurm_info("geopm version: %s", geopm_version());
     return 0;
 }
 
@@ -71,6 +73,8 @@ int slurm_spank_job_prolog(spank_t spank_ctx, int argc, char **argv)
         char err_msg[NAME_MAX];
         geopm_error_message(err, err_msg, NAME_MAX);
         slurm_info("geopm plugin prolog failure:");
+        slurm_info(err_msg);
+        geopm_error_message_last(err_msg, NAME_MAX);
         slurm_info(err_msg);
     }
     else {

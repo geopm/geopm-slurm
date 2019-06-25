@@ -34,7 +34,9 @@ ACLOCAL_AMFLAGS = -I m4
 AM_CPPFLAGS += -I$(top_srcdir)/src \
                -D_POSIX_C_SOURCE=200809L \
                # end
-pkglib_LTLIBRARIES = libgeopm_spank.la
+pkglib_LTLIBRARIES = libgeopm_spank.la \
+                     libgeopm_profile_policy_spank.la \
+                     # end
 
 install-exec-hook: install-plugin-dir
 
@@ -53,6 +55,10 @@ libgeopm_spank_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(geopm_spank_abi_versio
 libgeopm_spank_la_LIBADD = -lgeopmpolicy -lslurm
 libgeopm_spank_la_SOURCES = src/geopm_spank.c
 
+libgeopm_profile_policy_spank_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(geopm_spank_abi_version) -pthread
+libgeopm_profile_policy_spank_la_LIBADD = -lgeopmpolicy -lslurm
+libgeopm_profile_policy_spank_la_SOURCES = src/geopm_profile_policy_spank.c
+libgeopm_profile_policy_spank_la_CFLAGS = $(AM_CFLAGS) -pthread
+
 # CLEAN TARGETS
 DISTCLEANFILES = VERSION
-
