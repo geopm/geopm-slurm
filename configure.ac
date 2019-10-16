@@ -107,10 +107,10 @@ AM_PROG_CC_C_O
 LT_INIT
 
 # Checks for libraries and headers.
-AC_CHECK_LIB([geopmpolicy], [geopm_pio_write_control], [], [
+AC_CHECK_LIB([geopmpolicy], [geopm_pio_write_control], [true], [
     echo "missing libgeopmpolicy: GEOPM policy library is required"
     exit -1])
-AC_CHECK_LIB([geopmpolicy], [geopm_agent_enforce_policy], [], [
+AC_CHECK_LIB([geopmpolicy], [geopm_agent_enforce_policy], [true], [
     echo "invalid libgeopmpolicy: Newer version of libgeopmpolicy that supports geopm_agent_enforce_policy() is required."
     exit -1])
 AC_CHECK_HEADER([geopm_pio.h], [], [
