@@ -42,17 +42,11 @@ AC_ARG_WITH([slurm], [AS_HELP_STRING([--with-slurm=PATH],
             [specify directory for installed slurm package.])])
 if test "x$with_slurm" != x; then
   EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -I$with_slurm/include"
-  EXTRA_LDFLAGS="$EXTRA_LDFLAGS -L$with_slurm/lib"
 fi
 AC_ARG_WITH([slurm-include], [AS_HELP_STRING([--with-slurm-include=PATH],
             [specify directory for the installed slurm include files.])])
 if test "x$with_slurm_include" != x; then
   EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -I$with_slurm_include"
-fi
-AC_ARG_WITH([slurm-lib], [AS_HELP_STRING([--with-slurm-lib=PATH],
-            [specify directory for installed slurm library])])
-if test "x$with_slurm_lib" != x; then
-  EXTRA_LDFLAGS="$EXTRA_LDFLAGS -L$with_slurm_lib"
 fi
 
 AC_ARG_WITH([geopm], [AS_HELP_STRING([--with-geopm=PATH],

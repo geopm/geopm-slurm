@@ -50,9 +50,8 @@ EXTRA_DIST = .gitignore \
 
 # EXTEND FLAGS
 libgeopm_spank_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(geopm_spank_abi_version)
-libgeopm_spank_la_LIBADD = -lgeopmpolicy -lslurm
+libgeopm_spank_la_LIBADD = -lgeopmpolicy
 libgeopm_spank_la_SOURCES = src/geopm_spank.c
 
 # CLEAN TARGETS
 DISTCLEANFILES = VERSION
-
